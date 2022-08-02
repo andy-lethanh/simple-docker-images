@@ -23,7 +23,7 @@ jobs:
       registry: "ghcr.io"
       image-name: "${{ github.repository }}/java/simple-amazoncorretto/v17"
       tag: ${{ inputs.tag }}
-      working-dir: "java/simple-amazoncorretto/v17"
+      docker-file: "java/simple-amazoncorretto/v17/Dockerfile"
     secrets:
       username: ${{ github.actor }}
       password: ${{ secrets.GITHUB_TOKEN }}

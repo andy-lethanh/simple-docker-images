@@ -12,9 +12,14 @@ on:
       tag:
         required: true
         type: string
+      docker-file:
+        type: string
+        required: false
+        default: "Dockerfile"
       working-dir:
         required: true
         type: string
+        default: "./"
     secrets:
       username:
         required: true
@@ -56,7 +61,7 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v3
         with:
-          context: .
+          file: ${{ inputs.docker-file }}
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
