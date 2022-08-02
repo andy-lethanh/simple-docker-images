@@ -1,0 +1,24 @@
+name: Deploy simple java amazon corretto
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        required: true
+        type: string
+        description: "Image tag"
+
+
+jobs:
+
+  deploy-simple-java-amazon-corretto:
+    name: Deploy simple Java Amazon Corretto
+    uses: "./.github/workflows/deploy-image.yaml"
+    with:
+      registry: "ghcr.io"
+      image-name: "${{ github.repository }}/java/simple-amazoncorretto/v17"
+      tag: ${{ inputs.tag }}
+      working-dir: "java/simple-amazoncorretto/v17"
+    secrets:
+      username: ${{ github.actor }}
+      password: ${{ secrets.GITHUB_TOKEN }}
