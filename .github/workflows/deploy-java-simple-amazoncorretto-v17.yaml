@@ -13,6 +13,11 @@ jobs:
 
   deploy-simple-java-amazon-corretto:
     name: Deploy simple Java Amazon Corretto
+
+    permissions:
+      contents: read
+      packages: write
+
     uses: "./.github/workflows/deploy-image.yaml"
     with:
       registry: "ghcr.io"
